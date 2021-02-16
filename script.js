@@ -7,7 +7,6 @@ let start = 0;
 let squares = 255;
 let fragment = document.createDocumentFragment();
 divAdd.classList.add('box');
-
 //why wont box variable work
 while (start < squares) {
     start++;
@@ -31,7 +30,8 @@ let boxes = document.querySelectorAll('.box');
 //append fragment to DOM
 boxes.forEach(box => {
     box.addEventListener('mouseover', () => {
-        box.style.backgroundColor = 'red';
+        let hue = Math.floor(Math.random() * 361);
+        box.style.backgroundColor = `hsl(${hue}, 75%, 50%)`;
     });
 });
 
