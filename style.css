@@ -11,12 +11,15 @@ body, html {
     grid-template-columns: repeat(16,auto);
     grid-template-rows: repeat(16,auto);
     padding: 10px;
-    border: 10px lawngreen;
-    
 }
 
 .box {
     border: 1px black solid;
+    
+}
 
+.box:hover{
+    background-color: blue;
+    /* change class on hover? */
 }
 
