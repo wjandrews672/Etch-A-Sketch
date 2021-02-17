@@ -7,9 +7,19 @@ body, html {
     align-content: center;
   }
 
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin: 0;
+}
+
+#btn{
+    font-size: 1.5rem;
+}
+
 #border {
-    height: 700px;
-    width: 700px;
+    height: 600px;
+    width: 600px;
     display: grid;
     grid-template-columns: repeat(16,auto);
     grid-template-rows: repeat(16,auto);
