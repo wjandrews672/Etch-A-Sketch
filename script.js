@@ -1,35 +1,52 @@
 const grid = document.querySelector('#border');
 const divAdd = document.createElement('div');
-// const div2 = divAdd.cloneNode(true);
-// const text = document.createTextNode('test');
-let divs = [];
+const button = document.querySelector('#btn');
+window.addEventListener('load', setDefaultGrid);
+
 let start = 0;
-let squares = 256;
+let base = '';
+// let squares = (base * base);
 let fragment = document.createDocumentFragment();
 divAdd.classList.add('box');
 //why wont box variable work
-while (start < squares) {
-    start++;
-    divs.push(divAdd);
-    //we have an array of divs
-    //Now loop through and add them to fragment
+function setDefaultGrid() {
+    makeGrid(16);
 }
-for (let i = 0; i <= divs.length -1; i++) {
-    let divCln = divAdd.cloneNode(true);
-    fragment.appendChild(divCln);
-};
-grid.appendChild(fragment);
-let boxes = document.querySelectorAll('.box');
-// function changeColor() {
-//     //grab box div and change background color
-//     box.style.backgroundColor = 'blue';
-// }
-boxes.forEach(box => {
-    box.addEventListener('mouseover', () => {
-        let hue = Math.floor(Math.random() * 361);
-        box.style.backgroundColor = `hsl(${hue}, 75%, 50%)`;
-    });
-});
 
-//create button that changes number of grid squares
-//function needs to change squares variable and grid parameters
+function makeGrid(base) {
+    let divs = [];
+    let squares = (base * base);
+    while (start < squares) {
+        start++;
+        divs.push(divAdd);
+    }
+    for (let i = 0; i <= divs.length -1; i++) {
+        let divCln = divAdd.cloneNode(true);
+        fragment.appendChild(divCln);
+    };
+
+    grid.appendChild(fragment);
+
+    changeColor();
+};
+
+function changeColor(){
+    let boxes = document.querySelectorAll('.box');
+
+    boxes.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            let hue = Math.floor(Math.random() * 361);
+            box.style.backgroundColor = `hsl(${hue}, 75%, 50%)`;
+        });
+    });
+}
+
+function changeGrid () {
+    //prompt will change base value and reset page
+    base = prompt('how many squares per side?')
+    grid.style.gridTemplateColumns = `repeat(${base},auto)`
+    grid.style.gridTemplateRows = `repeat(${base},auto)`
+    makeGrid();
+}
+
+button.addEventListener('click', changeGrid);
