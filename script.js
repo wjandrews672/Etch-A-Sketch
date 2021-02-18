@@ -34,7 +34,6 @@ function makeGrid(base) {
 
 //organize script page
 //add grey to black darker color functionality
-//put limit of 100 on changeGrid()
 
 function changeColor(){
     let boxes = document.querySelectorAll('.box');
@@ -56,9 +55,14 @@ function removeDivs() {
 }
 
 function changeGrid () {
-    base = prompt('how many squares per side?')
-
-    makeGrid(base);
+    base = parseInt(prompt('how many squares per side?'));
+    if ((base >100) || (base < 1)) {
+        alert('please choose a higher than 0 and number lower than 100');
+    } else if (Number.isNaN(base)) {
+        alert('please type a number')
+    } else {
+        makeGrid(base);
+    }
 }
 
 button.addEventListener('click', changeGrid);
