@@ -3,22 +3,21 @@ const divAdd = document.createElement('div');
 const button = document.querySelector('#btn');
 window.addEventListener('load', setDefaultGrid);
 
-let start = 0;
-let base = '';
-// let squares = (base * base);
 let fragment = document.createDocumentFragment();
 divAdd.classList.add('box');
-//why wont box variable work
 function setDefaultGrid() {
     makeGrid(16);
 }
 
 function makeGrid(base) {
+    removeDivs();
+    let start = 0;
     let divs = [];
     let squares = (base * base);
     while (start < squares) {
         start++;
         divs.push(divAdd);
+
     }
     for (let i = 0; i <= divs.length -1; i++) {
         let divCln = divAdd.cloneNode(true);
@@ -27,8 +26,15 @@ function makeGrid(base) {
 
     grid.appendChild(fragment);
 
+    grid.style.gridTemplateColumns = `repeat(${base},auto)`
+
     changeColor();
 };
+
+
+//organize script page
+//add grey to black darker color functionality
+//put limit of 100 on changeGrid()
 
 function changeColor(){
     let boxes = document.querySelectorAll('.box');
@@ -41,12 +47,18 @@ function changeColor(){
     });
 }
 
+function removeDivs() {
+    let boxes = document.querySelectorAll('.box');
+
+    boxes.forEach(box => {
+        box.remove();
+    });
+}
+
 function changeGrid () {
-    //prompt will change base value and reset page
     base = prompt('how many squares per side?')
-    grid.style.gridTemplateColumns = `repeat(${base},auto)`
-    grid.style.gridTemplateRows = `repeat(${base},auto)`
-    makeGrid();
+
+    makeGrid(base);
 }
 
 button.addEventListener('click', changeGrid);
