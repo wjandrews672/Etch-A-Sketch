@@ -17,12 +17,14 @@ h1 {
     font-size: 1.5rem;
 }
 
+
+/* Add background, make title and button pretty */
+
+
 #border {
     height: 600px;
     width: 600px;
     display: grid;
-    grid-template-columns: repeat(16,auto);
-    grid-template-rows: repeat(16,auto);
     padding: 10px;
 }
 
@@ -33,7 +35,5 @@ h1 {
 
 .box:hover{
     background-color: blue;
-    /* change class on hover?
-    use on hover function */
 }
 
