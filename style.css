@@ -5,6 +5,9 @@ body, html {
     display: grid;
     justify-content: center;
     align-content: center;
+    font-family: Courier, monospace;
+    letter-spacing: 1px;
+    background: rgb(202, 192, 192);
   }
 
 h1 {
@@ -15,6 +18,12 @@ h1 {
 
 #btn{
     font-size: 1.5rem;
+    display: grid;
+    justify-self: center;
+    align-content: center;
+    width: fit-content;
+    border-radius: 2%;
+    /* background: rgb(65, 65, 114); */
 }
 
 
